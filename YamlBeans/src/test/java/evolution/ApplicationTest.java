@@ -1,18 +1,38 @@
 package evolution;
 
 import java.util.Arrays;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Test;
 
+import evolution.dto.AnotherDto;
 import evolution.dto.AnyDto;
+import evolution.dto.TheOtherDto;
 import evolution.util.Sys;
 
 public class ApplicationTest {
 	@Test
 	public void testWrite() {
 		AnyDto anyDto = new AnyDto();
+		// Set a plain field.
 		anyDto.setName("Chen");
-		anyDto.setAddresses(Arrays.asList("Champaign", "Urbanba"));
+		// Set a list of strings.
+		List<String> addresses = new LinkedList<>();
+		addresses.add("Champaign");
+		addresses.add("Urbanba");
+		anyDto.setAddresses(addresses);
+		// Set a list of DTOs.
+		AnotherDto anotherDto = new AnotherDto();
+		anotherDto.setGender("M");
+		List<AnotherDto> anotherDtos = new LinkedList<>();
+		anyDto.setAnotherDtos(anotherDtos);
+		// Set a DTO.
+		TheOtherDto theOtherDto = new TheOtherDto();
+		theOtherDto.setDate(new Date());
+		anyDto.setTheOtherDto(theOtherDto);
+		// Generate yml file. 
 		Application.write(anyDto, "/home/chen/Desktop/Playground/Data/Yml_Output.yml", true);
 	}
 	

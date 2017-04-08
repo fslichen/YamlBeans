@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import com.esotericsoftware.yamlbeans.YamlReader;
 import com.esotericsoftware.yamlbeans.YamlWriter;
 
-import evolution.dto.AnyDto;
 import evolution.util.Sys;
 
 public class Application {
@@ -23,7 +22,6 @@ public class Application {
 		}
 		try {
 			YamlWriter writer = new YamlWriter(new FileWriter(filePath));
-			writer.getConfig().setPrivateFields(true);
 			writer.write(object);
 			writer.close();
 		} catch (Exception e) {

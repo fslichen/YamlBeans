@@ -1,6 +1,5 @@
 package evolution;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,6 +26,7 @@ public class ApplicationTest {
 		AnotherDto anotherDto = new AnotherDto();
 		anotherDto.setGender("M");
 		List<AnotherDto> anotherDtos = new LinkedList<>();
+		anotherDtos.add(anotherDto);
 		anyDto.setAnotherDtos(anotherDtos);
 		// Set a DTO.
 		TheOtherDto theOtherDto = new TheOtherDto();
@@ -35,10 +35,12 @@ public class ApplicationTest {
 		// Generate yml file. 
 		Application.write(anyDto, "/home/chen/Desktop/Playground/Data/Yml_Output.yml", true);
 	}
-	
+
 	@Test
 	public void testRead() {
 		AnyDto anyDto = Application.read("/home/chen/Desktop/Playground/Data/Yml_Output.yml", AnyDto.class);
 		Sys.println(anyDto);
 	}
+
+
 }
